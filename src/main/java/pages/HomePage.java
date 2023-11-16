@@ -14,10 +14,6 @@ import setup.TestDataReader;
 import setup.TestSetup;
 
 public class HomePage extends TestSetup {
-
-	
-	@FindBy(xpath = "//*[@id=\"slider-carousel\"]/div/div[1]/div[2]/img")
-    private WebElement girlImgResponsive;
     
     @FindBy(css = "a[href='/login']")
     private WebElement signupLoginButton;
@@ -100,9 +96,10 @@ public class HomePage extends TestSetup {
         this.driver = driver;
     }
     
+    /*
     public WebElement homePageIsVisible() {
         return girlImgResponsive;
-    }
+    }*/
 
     public LoginSignupPage signupLoginClick() {
         signupLoginButton.click();

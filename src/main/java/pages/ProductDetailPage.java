@@ -16,7 +16,7 @@ import org.json.simple.parser.ParseException;
 
 public class ProductDetailPage {
 
-    @FindBy(css = "div[class='product-information'] h2")
+    @FindBy(xpath = "/html/body/section/div/div/div[2]/div[2]/div[2]/div")
     private WebElement productName;
 
     @FindBy(xpath = "//section/div/div/div[2]/div[2]/div[2]/div/p[1]")

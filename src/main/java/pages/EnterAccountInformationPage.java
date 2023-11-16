@@ -22,6 +22,9 @@ public class EnterAccountInformationPage extends TestSetup {
 
     @FindBy(id = "id_gender2")
     private WebElement titleMrCheckbox;
+    
+    @FindBy(xpath = "//*[@id=\"form\"]/div/div/div/div[1]/form/div[1]/div[2]/label")
+    private WebElement titleMrsCheckbox;
 
     @FindBy(id = "password")
     private WebElement passwordInput;
@@ -93,7 +96,7 @@ public class EnterAccountInformationPage extends TestSetup {
 		
 		JSONObject accountDetails = TestDataReader.accountDetails();
 		
-        titleMrCheckbox.click();
+        titleMrsCheckbox.click();
         passwordInput.sendKeys(password);
         Select days = new Select(daysSelect);
         days.selectByValue((String) accountDetails.get("day"));

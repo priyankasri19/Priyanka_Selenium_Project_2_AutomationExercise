@@ -43,10 +43,11 @@ public class TestCase6 extends TestSetup{
 
     private void clickHomeButtonAndCheckIsLandedToHomePage() {
     	System.out.println("Click Home Button And Check Is Landed To Home Page");
-        boolean homePageVisible = new ContactUsPage(getDriver())
-                .homePageButtonClick()
-                .homePageIsVisible()
-                .isDisplayed();
+    	String homePageTitle = 
+    					new ContactUsPage(getDriver())
+    							.homePageButtonClick()
+    							.homePageTitle();
+        boolean homePageVisible =  "Automation Exercise".equalsIgnoreCase(homePageTitle) ? true : false;       
         Assert.assertTrue(homePageVisible, "Click 'Home' button and verify that landed to home page successfully");
     }
 
