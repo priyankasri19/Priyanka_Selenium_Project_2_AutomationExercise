@@ -22,8 +22,9 @@
 package testCases;
 
 import java.io.IOException;
-import org.json.simple.parser.ParseException;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -32,13 +33,10 @@ import pages.EnterAccountInformationPage;
 import pages.HomePage;
 import pages.LoggedHomePage;
 import pages.LoginSignupPage;
-import setup.AutomationExerciseConstants;
+import setup.TestDataReader;
 import setup.TestSetup;
 
 public class TestCase1 extends TestSetup {
-	
-	//String name = AutomationExerciseConstants.name;
-    //String email = AutomationExerciseConstants.email;
 	
 	@Test
 	 public void registerUser() throws IOException, ParseException {
@@ -67,8 +65,13 @@ public class TestCase1 extends TestSetup {
 		Assert.assertEquals(newUserSignupText, "New User Signup!", "Verify 'New User Signup!' is visible");
 	}
 	
-	private void isEnterAccountInformationVisible() {
+	private void isEnterAccountInformationVisible() throws IOException, ParseException {
 		System.out.println("Step : Is Enter Account Information Visible");
+		
+		JSONObject commonTestDetails = TestDataReader.commonTestData();
+		String name=(String) commonTestDetails.get("name");
+		String email=(String) commonTestDetails.get("email");
+		
 		String enterAccountInformationText = 
 					new LoginSignupPage(getDriver())
 							.fillCorrectSignup(name, email)
@@ -88,8 +91,11 @@ public class TestCase1 extends TestSetup {
         Assert.assertEquals(accountCreatedText, "ACCOUNT CREATED!", "Verify that 'ACCOUNT CREATED!' is visible");
 	}
 	
-	private void isLoggedInAsUsernameVisible() {
+	private void isLoggedInAsUsernameVisible() throws IOException, ParseException {
 		System.out.println("Step : Is LoggedIn As Username Visible");
+		
+		JSONObject commonTestDetails = TestDataReader.commonTestData();
+		String name=(String) commonTestDetails.get("name");
 		String username = 
 					new AccountCreatedPage(getDriver())
 							.continueButtonClick()

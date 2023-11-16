@@ -1,6 +1,10 @@
 package pages;
 
 
+import java.io.IOException;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import setup.AutomationExerciseConstants;
 import setup.AutomationExerciseUtility;
+import setup.TestDataReader;
 
 public class ContactUsPage {
 
@@ -51,11 +56,18 @@ public class ContactUsPage {
     }
     
 
-    public ContactUsPage fillForm() {
-        nameInput.sendKeys(AutomationExerciseConstants.name);
-        emailInput.sendKeys(AutomationExerciseConstants.email);
-        subjectInput.sendKeys(AutomationExerciseConstants.subject);
-        messageInput.sendKeys(AutomationExerciseConstants.message);
+    public ContactUsPage fillForm() throws IOException, ParseException {
+    	
+		JSONObject commonTestDetails = TestDataReader.commonTestData();
+		String name=(String) commonTestDetails.get("name");
+		String email=(String) commonTestDetails.get("email");
+		String subject=(String) commonTestDetails.get("subject");
+		String message=(String) commonTestDetails.get("message");
+		
+        nameInput.sendKeys(name);
+        emailInput.sendKeys(email);
+        subjectInput.sendKeys(subject);
+        messageInput.sendKeys(message);
         uploadFileInput.
         	sendKeys(AutomationExerciseUtility.getAbsolutePath() + 
         				AutomationExerciseConstants.attachmentFileName);

@@ -88,8 +88,11 @@ public class EnterAccountInformationPage extends TestSetup {
     
     public AccountCreatedPage fillAccountDetails() throws IOException, ParseException {
     	
-    	JSONObject accountDetails = TestDataReader.accountDetails();
-        String password = AutomationExerciseConstants.password;
+    	JSONObject validUserDetails = TestDataReader.validUserDetails();
+		String password=(String) validUserDetails.get("password");
+		
+		JSONObject accountDetails = TestDataReader.accountDetails();
+		
         titleMrCheckbox.click();
         passwordInput.sendKeys(password);
         Select days = new Select(daysSelect);

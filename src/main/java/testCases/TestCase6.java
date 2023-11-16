@@ -1,5 +1,8 @@
 package testCases;
 
+import java.io.IOException;
+
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +14,7 @@ import setup.TestSetup;
 public class TestCase6 extends TestSetup{
 	
 	@Test
-	public void contactUsForm() {
+	public void contactUsForm() throws IOException, ParseException {
         TestCase1.isHomePageVisible();
         isGetInTouchVisible();
         checkSuccessMsgYourDetailsSubmittedSuccessfully();
@@ -27,7 +30,7 @@ public class TestCase6 extends TestSetup{
         Assert.assertEquals(getGetInTouchText, "GET IN TOUCH", "Verify 'GET IN TOUCH' is visible");
     }
 
-    private void checkSuccessMsgYourDetailsSubmittedSuccessfully() {
+    private void checkSuccessMsgYourDetailsSubmittedSuccessfully() throws IOException, ParseException {
     	System.out.println("Check Success Msg Your Details Submitted Successfully");
         String alertSuccessText = new ContactUsPage(getDriver())
                 .fillForm()

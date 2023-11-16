@@ -21,11 +21,12 @@ import setup.TestSetup;
 
 public class TestCase14 extends TestSetup {
 	
-	String name = AutomationExerciseConstants.name;
-    String email = AutomationExerciseConstants.email;
-    
     @Test
     public void placeOrderRegisterWhileCheckout() throws IOException, ParseException {
+		JSONObject commonTestDetails = TestDataReader.commonTestData();
+		String name=(String) commonTestDetails.get("name");
+		String email=(String) commonTestDetails.get("email");
+    	
     	TestCase1.isHomePageVisible();
     	isCartPageDisplayed();
     	checkIsAccountCreatedAndClickContinueButton(name, email);

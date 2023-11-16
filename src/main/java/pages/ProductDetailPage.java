@@ -118,9 +118,13 @@ public class ProductDetailPage {
     	JSONObject validUserDetails = TestDataReader.validUserDetails();
 		String name=(String) validUserDetails.get("name");
 		String email=(String) validUserDetails.get("email");
+		
+		JSONObject commonTestDetails = TestDataReader.commonTestData();
+		String sampleReview=(String) commonTestDetails.get("sampleReview");
+		
         yourNameInput.sendKeys(name);
         emailAddress.sendKeys(email);
-        addReviewHere.sendKeys(AutomationExerciseConstants.sampleReview);
+        addReviewHere.sendKeys(sampleReview);
         submitButton.click();
         return this;
     }
